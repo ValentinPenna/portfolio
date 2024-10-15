@@ -1,15 +1,18 @@
 ---
+import { getLangFromUrl, useTranslations } from '../components/i18n/utils';
 
+const lang = getLangFromUrl(Astro.url);
+const t = useTranslations(lang);
 ---
 
 <header class="flex w-1/2 items-center flex-col">
         <div class="w-fit m-auto mb-6 flex gap-4">
-            <img src="/assets/avatar.png" alt="" class="rounded-full w-36 h-36 self-center">
+            <img src="/assets/avatar.png" alt="" class="rounded-full size-36 self-center">
             <div class="flex flex-col self-center">
-                <p class="text-xl font-semibold">Hola, yo soy</p>
+                <p class="text-xl font-semibold">{t("header.greeting")}</p>
                 <h1 class="text-5xl font-bold text-primary">Valentin Penna</h1>
-                <h3 class="text-3xl font-bold">- Desarrollador Full Stack</h3>
+                <h3 class="text-3xl font-bold">- {t("header.role")}</h3>
             </div>
         </div>
-        <p class="text-base text-justify font-semibold">Toda mi vida fui un gran apasionado de la informatica y todo lo que tuviera que ver con la tecnologia, este camino me ha permitido adentrarme de a poco al mundo de la programacion y es lo que me ha llevado a convertirme en un Desarrollador Web.<br />A pesar de ser Desarrollador Full Stack, mi gusto por el diseño digital me hizo inclinarme hacia el lado del Front End, siendo esta mi principal area de trabajo.</p>
+        <p class="text-base text-justify font-semibold">{t("header.desc1")}<br />{t("header.desc2")}</p>
 </header>

@@ -1,0 +1,20 @@
+---
+interface Props {
+    title: string;
+    description: string;
+    techs: string;
+    url: string;
+    img: string;
+}
+
+const { title, description, techs, url, img } = Astro.props;
+---
+<div class="flex flex-row gap-6">
+    <img src={img} alt="">
+    <div class="flex flex-col gap-4">
+        <h3 class="text-2xl font-bold">{title}</h3>
+        <p class="text-lg font-semibold">{description}</p>
+        <p class="text-lg font-semibold">{techs}</p>
+        <a href={url} target="_blank" class="text-lg font-semibold">Ver mas</a>
+    </div>
+</div>

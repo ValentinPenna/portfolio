@@ -1,0 +1,23 @@
+---
+import Layout from '../../layouts/Layout.astro';
+import Header from '../../components/Header.astro';
+import Techs from '../../components/Techs.astro';
+import LenguagePicker from '../../components/LenguagePicker.astro';
+---
+
+<Layout title="Portfolio - Valentin Penna">
+	<main class="flex items-center p-16 flex-col gap-10">
+		<LenguagePicker/>
+		<Header/>
+		<Techs/>
+	</main>
+</Layout>
+
+<style>
+	main {
+		margin: auto;
+		color: white;
+		font-size: 1.5rem;
+		line-height: 1.6;
+	}
+</style>
