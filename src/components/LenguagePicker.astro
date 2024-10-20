@@ -1,10 +1,10 @@
 ---
 import { languages } from './i18n/ui';
 ---
-<ul>
+<ul class="flex gap-4 flex-wrap justify-around p-2 self-end">
   {Object.entries(languages).map(([lang, label]) => (
     <li>
-      <a href={`/${lang}/`}>{label}</a>
+      <a href={`/${lang}/`} class="text-xl font-bold">{label}</a>
     </li>
   ))}
 </ul>
