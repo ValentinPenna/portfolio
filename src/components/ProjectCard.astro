@@ -1,5 +1,6 @@
 ---
 import { getLangFromUrl, useTranslations } from './i18n/utils';
+import { CldImage } from "astro-cloudinary"
 
 interface Props {
     title: string;
@@ -7,27 +8,28 @@ interface Props {
     techs: string[];
     repoUrl: string;
     deployUrl: string;
-    imgsRoute: string;
+    images: string[];
 }
 
-const { title, description, techs, repoUrl, deployUrl, imgsRoute } = Astro.props;
+const { title, description, techs, repoUrl, deployUrl, images } = Astro.props;
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
 ---
 <div class="flex flex-col gap-6">
     <h3 class="text-2xl font-bold self-center text-primary">{title}</h3>
     <div class="flex flex-wrap gap-2">
-        <img src={"/assets/projects/" + imgsRoute + "/1.png"} alt="" class="object-cover rounded-2xl grow basis-[200] w-48 sm:w-52 md:w-56 lg:w-80 xl:w-96"/>
-        <img src={"/assets/projects/" + imgsRoute + "/2.png"} alt="" class="object-cover rounded-2xl grow basis-[200] w-48 sm:w-52 md:w-56 lg:w-80 xl:w-96"/>
-        <img src={"/assets/projects/" + imgsRoute + "/3.png"} alt="" class="object-cover rounded-2xl grow basis-[200] w-48 sm:w-52 md:w-56 lg:w-80 xl:w-96"/>
-        <img src={"/assets/projects/" + imgsRoute + "/4.png"} alt="" class="object-cover rounded-2xl grow basis-[200] w-48 sm:w-52 md:w-56 lg:w-80 xl:w-96"/>
+        {images && images[0] && <img class="object-cover rounded-2xl grow basis-[200] w-48 sm:w-52 md:w-56 lg:w-80 xl:w-96" src={images[0]} alt=""/>}
+        {images && images[1] && <img class="object-cover rounded-2xl grow basis-[200] w-48 sm:w-52 md:w-56 lg:w-80 xl:w-96" src={images[1]} alt=""/>}
+        {images && images[2] && <img class="object-cover rounded-2xl grow basis-[200] w-48 sm:w-52 md:w-56 lg:w-80 xl:w-96" src={images[2]} alt=""/>}
+        {images && images[3] && <img class="object-cover rounded-2xl grow basis-[200] w-48 sm:w-52 md:w-56 lg:w-80 xl:w-96" src={images[3]} alt=""/>}
     </div>
     <div class="flex flex-col gap-4">
         <p class="text-lg font-normal">{description}</p>
         <p class="text-lg font-semibold">{t("projects.techs")}: {techs.join(", ")}</p>
         <div class="flex gap-4 self-end items-center">
-            <a href={repoUrl} target="_blank" class="text-lg font-normal italic text-primary">{t("projects.repo")}</a> |
-            <a href={deployUrl} target="_blank" class="text-lg font-normal italic text-primary">{t("projects.deploy")}</a>
+            {repoUrl && <a href={repoUrl} target="_blank" class="text-lg font-normal italic text-primary">{t("projects.repo")}</a>}
+            {repoUrl && deployUrl && <span class="text-lg font-normal italic text-primary">|</span>}
+            {deployUrl && <a href={deployUrl} target="_blank" class="text-lg font-normal italic text-primary">{t("projects.deploy")}</a>}
         </div>
     </div>
 </div>

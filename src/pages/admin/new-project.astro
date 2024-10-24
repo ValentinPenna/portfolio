@@ -1,0 +1,36 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import CreateProject from "../../components/CreateProject";
+import { CldUploadWidget } from "astro-cloudinary";
+
+export const prerender = false
+---
+
+<Layout title="Portfolio - Valentin Penna">
+    <main class="flex items-center p-6 md:p-16 flex-col gap-10">
+        <form method="">
+            <CldUploadWidget uploadPreset="portfolio-projects" id="upload-events">
+            <button>Upload</button>
+            </CldUploadWidget>
+            <label for="title"></label>
+            <input type="text" name="title" id="title" />
+            <label for="description"></label>
+            <input type="text" name="description" id="description" />
+            <label for="techs"></label>
+            <input type="text" name="techs" id="techs" />
+            <label for="repoUrl"></label>
+            <input type="text" name="repoUrl" id="repoUrl" />
+            <label for="deployUrl"></label>
+            <input type="text" name="deployUrl" id="deployUrl" />
+        </form>
+    </main>
+</Layout>
+<script>
+    const widget = document.querySelector('#upload-events');
+    
+    if ( widget ) {
+      widget.addEventListener('clduploadwidget:success', ((e: CustomEvent<{ detail: object }>) => {
+        console.log('clduploadwidget:success', e.detail);
+      }) as EventListener);
+    }
+    </script>
