@@ -64,7 +64,7 @@ export const ENprojects = [
         techs: ['Astro', 'Tailwind', 'TypeScript'],
         images: ["https://res.cloudinary.com/djbc2plbk/image/upload/v1729887427/Portfolio/lb4fykaeefwgijnfnnsr.png"],
         repoUrl: 'https://github.com/ValentinPenna/portfolio',
-        deployUrl: ''
+        deployUrl: 'https://portfolio-valentin-pennas-projects.vercel.app/es/'
     },
     {
         title: 'InnovaTech E-Commerce',
