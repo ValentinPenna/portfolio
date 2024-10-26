@@ -1,16 +1,16 @@
 ---
-import { getLangFromUrl, useTranslations } from '../components/i18n/utils';
+import { getLangFromUrl, useTranslations, useProjectTranslations } from '../components/i18n/utils';
 import ProjectCard from './ProjectCard.astro';
-import { projects } from '../utils/projectsdata';
 // import { getProjects } from '../utils/dbCalls';
 // const projects = await getProjects();
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
+const projects = useProjectTranslations(lang);
 ---
 
 <div class="flex flex-col gap-6 w-full sm:w-3/4">
     <h4 class="text-2xl font-bold">{t("projects.title")}:</h4>
-    {projects?.map((project:any)=>(
+    {projects()?.map((project:any)=>(
         <ProjectCard title={project.title} description={project.description} techs={project.techs} repoUrl={project.repoUrl} deployUrl={project.deployUrl} images={project.images}/>
     ))}
 </div>

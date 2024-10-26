@@ -1,6 +1,7 @@
 ---
 import { getLangFromUrl, useTranslations } from '../components/i18n/utils';
 import LenguagePicker from './LenguagePicker.astro';
+import Social from './Social.astro';
 
 const lang = getLangFromUrl(Astro.url);
 const t = useTranslations(lang);
@@ -10,15 +11,24 @@ const t = useTranslations(lang);
     <p class="text-lg font-bold">{t("lang")}:</p>
     <LenguagePicker/>
 </div>
-<header class="flex w-full sm:w-3/4 md:w-2/3 lg:w-1/2 items-center flex-col">
-        <div class="w-fit m-auto mb-6 flex gap-4">
-            <img src="/assets/avatar.png" alt="" class="rounded-full size-28 sm:size-36 self-center">
-            <div class="flex flex-col self-center">
+<header class="flex w-full sm:w-4/5 md:w-3/4 lg:w-2/3 xl:w-1/2 items-center flex-col gap-4">
+        <div class="w-fit m-auto flex gap-4 flex-col sm:flex-row items-center">
+            <div class="flex gap-4 flex-wrap sm:flex-nowrap">
+            <img src="/assets/avatar.png" alt="" class="rounded-full size-36 sm:size-32 md:size-32 lg:size-36 self-center">
+            <div class=" flex-col self-center hidden sm:flex">
                 <p class="text-xl font-semibold">{t("header.greeting")}</p>
-                <h1 class="text-4xl sm:text-5xl font-bold text-primary">Valentin Penna</h1>
-                <h3 class="text-2xl sm:text-3xl font-bold">- {t("header.role")}</h3>
+                <h1 class="text-4xl sm:text-5xl md:text-4xl lg:text-5xl font-bold text-primary">Valentin Penna</h1>
+                <h3 class="text-2xl sm:text-3xl md:text-2xl lg:text-3xl font-bold">- {t("header.role")}</h3>
+            </div>
+            <img src="/favicon.png" alt="" class="rounded-full size-36 sm:size-32 md:size-32 lg:size-36 self-center">
+            </div>
+            <div class="flex sm:hidden flex-col self-center">
+                <p class="text-xl font-semibold">{t("header.greeting")}</p>
+                <h1 class="text-5xl sm:text-5xl font-bold text-primary">Valentin Penna</h1>
+                <h3 class="text-3xl sm:text-3xl font-bold">- {t("header.role")}</h3>
             </div>
         </div>
         <p class="text-base text-justify font-semibold">{t("header.desc1")}<br />{t("header.desc2")}</p>
+        <Social />
 </header>
 <div/>
